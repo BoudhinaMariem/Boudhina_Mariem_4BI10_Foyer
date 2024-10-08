@@ -15,11 +15,21 @@ public class ChambreController {
     IChambreService chambreService;
     @PostMapping("/addChambre")
     Chambre addChambre(@RequestBody Chambre c){
+
         return chambreService.addChambre(c);
     }
 
     @GetMapping("/findAll")
     List<Chambre> findAll(){
         return chambreService.getAllChambre();
+    }
+
+    @DeleteMapping("/deleteChambre/{idChambre}")
+    public void deleteChambre(@PathVariable("idChambre") Long idChambre) {
+        chambreService.deleteChambre(idChambre);
+    }
+    @PutMapping("/updateChambre")
+    public Chambre UpdateChambre(@RequestBody Chambre c) {
+        return chambreService.UpdateChambre(c);
     }
 }

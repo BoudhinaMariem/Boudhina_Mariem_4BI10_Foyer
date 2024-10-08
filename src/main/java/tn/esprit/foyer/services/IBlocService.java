@@ -10,7 +10,7 @@ import java.util.List;
 
 public interface IBlocService {
     public Bloc addBloc (Bloc bloc);
-    public void deleteCBloc (Long idBloc);
+    public void deleteBloc (Long idBloc);
     public Bloc UpdateBloc (Bloc bloc);
     public List<Bloc> getAllBloc ();
 }

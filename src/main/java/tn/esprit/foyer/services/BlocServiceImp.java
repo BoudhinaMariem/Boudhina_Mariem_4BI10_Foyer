@@ -19,7 +19,7 @@ public class BlocServiceImp implements IBlocService{
     }
 
     @Override
-    public void deleteCBloc(Long idBloc) {
+    public void deleteBloc(Long idBloc) {
         blocRepository.deleteById(idBloc);
     }
 
