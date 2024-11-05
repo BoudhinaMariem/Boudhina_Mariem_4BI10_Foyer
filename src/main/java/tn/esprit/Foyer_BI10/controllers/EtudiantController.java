@@ -1,10 +1,13 @@
 package tn.esprit.Foyer_BI10.controllers;
 
+import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.web.bind.annotation.*;
 import tn.esprit.Foyer_BI10.entites.Etudiant;
 import tn.esprit.Foyer_BI10.services.IEtudiantService;
 
 import java.util.List;
+
+@Tag(name ="Gestion Etudiant")
 
 @RestController
 @RequestMapping("/etudiant")

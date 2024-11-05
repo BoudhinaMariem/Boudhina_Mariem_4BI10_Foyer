@@ -22,4 +22,7 @@ public class Reservation {
     private Date anneeUniversitaire;
 
     private Boolean  estValid;
+
+    @ManyToOne
+    private Chambre chambre;
 }

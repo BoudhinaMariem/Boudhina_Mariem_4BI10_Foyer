@@ -1,5 +1,6 @@
 package tn.esprit.Foyer_BI10.entites;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -15,14 +16,21 @@ import java.util.List;
 @NoArgsConstructor
 public class Chambre {
     @ManyToOne
+    @JsonIgnore
     private Bloc bloc;
-    @OneToMany
-    List<Reservation> reservations;
+
+
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long idChambre;
+
     private Long numeroChambre;
+
     @Enumerated(EnumType.STRING)
-    private TypeChambre typeC;
+    private TypeChambre typeC; // Ensure 'TypeChambre' is correctly defined elsewhere
+
+    //
+    @OneToMany(mappedBy = "chambre")
+    private List<Reservation> reservations;
 }

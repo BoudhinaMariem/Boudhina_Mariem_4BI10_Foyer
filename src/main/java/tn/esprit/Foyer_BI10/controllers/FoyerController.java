@@ -1,10 +1,13 @@
 package tn.esprit.Foyer_BI10.controllers;
 
+import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.web.bind.annotation.*;
 import tn.esprit.Foyer_BI10.entites.Foyer;
 import tn.esprit.Foyer_BI10.services.IFoyerService;
 
 import java.util.List;
+@Tag(name ="Gestion Foyer")
+
 
 @RestController
 @RequestMapping("/foyer")
