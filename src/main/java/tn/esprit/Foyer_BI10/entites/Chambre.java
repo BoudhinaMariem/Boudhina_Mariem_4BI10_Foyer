@@ -16,6 +16,7 @@ import java.util.List;
 @NoArgsConstructor
 public class Chambre {
     @ManyToOne
+    @JoinColumn(name = "bloc_id")
     @JsonIgnore
     private Bloc bloc;
 

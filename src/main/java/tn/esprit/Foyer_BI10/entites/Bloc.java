@@ -15,7 +15,7 @@ import java.util.List;
 @NoArgsConstructor
 public class Bloc {
     @ManyToOne
-    private Foyer foyer;
+    public Foyer foyer;
     @OneToMany
     List<Chambre> chambres;
     @Id

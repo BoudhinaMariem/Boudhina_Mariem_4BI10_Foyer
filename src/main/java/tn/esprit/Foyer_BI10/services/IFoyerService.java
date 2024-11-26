@@ -11,4 +11,6 @@ public interface IFoyerService {
     public void deleteFoyer (Long idFoyer);
     public Foyer UpdateFoyer(Foyer foyer);
     public List<Foyer> getAllFoyers();
+
+    Foyer ajouterFoyerAvecBlocsAssociés(Foyer foyer);
 }

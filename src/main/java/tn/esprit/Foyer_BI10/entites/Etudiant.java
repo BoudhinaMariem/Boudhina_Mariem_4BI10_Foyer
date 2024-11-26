@@ -25,4 +25,8 @@ public class Etudiant {
     private Long cin;
     private String ecole;
     private Date dateNaissance;
+
+    public List<Reservation> getReservations() {
+        return resrvations;
+    }
 }

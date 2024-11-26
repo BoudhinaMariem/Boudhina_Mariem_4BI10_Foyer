@@ -11,4 +11,7 @@ public interface IUniversiteService {
     public void deleteUniversite(Long idUniversite);
     public Universite UpdateUniversite(Universite universite);
     public List<Universite> getAllUniversites();
+
+    Universite affecterFoyerAUniversite(long idFoyer, String nomUniversite);
+    Universite desaffecterFoyerAUniversite(long idUniversite);
 }

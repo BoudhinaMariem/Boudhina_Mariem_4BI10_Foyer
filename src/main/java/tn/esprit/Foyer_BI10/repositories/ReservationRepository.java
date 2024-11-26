@@ -11,4 +11,5 @@ import java.util.List;
 public interface ReservationRepository extends JpaRepository <Reservation,String> {
 
     List<Reservation> findByAnneeUniversitaireBetween(Date d1, Date d2);
+
 }

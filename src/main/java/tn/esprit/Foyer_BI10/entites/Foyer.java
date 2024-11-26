@@ -15,7 +15,7 @@ import java.util.List;
 @NoArgsConstructor
 public class Foyer {
     @OneToMany
-    List<Bloc> bloc;
+    public List<Bloc> bloc;
     @OneToOne(mappedBy = "foyer")
     private Universite uni;
 
@@ -24,4 +24,5 @@ public class Foyer {
     private Long idFoyer;
     private String nomFoyer;
     private Long capaciteFoyer;
+
 }

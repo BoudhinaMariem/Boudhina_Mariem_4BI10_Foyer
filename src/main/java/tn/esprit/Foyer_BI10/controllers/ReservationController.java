@@ -15,8 +15,11 @@ import java.util.List;
 @RestController
 @RequestMapping("/reservation")
 public class ReservationController {
-     IReservationService reservationService;
+    public final IReservationService reservationService;
 
+    public ReservationController(IReservationService reservationService) {
+        this.reservationService = reservationService;
+    }
 
 
     @PostMapping("/addReservation")
@@ -46,5 +49,8 @@ public class ReservationController {
         return reservationService.findByAnneeUniversitaireBetween(d1, d2);
     }
 
-
+    @PostMapping("/ajoutReservationAvecEtudiants")
+    public Reservation ajouterReservationAvecEtudiants(@RequestBody Reservation reservation) {
+        return reservationService.ajouterReservationAvecEtudiants(reservation);
+    }
 }

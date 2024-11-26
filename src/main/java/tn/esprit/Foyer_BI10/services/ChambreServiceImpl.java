@@ -1,9 +1,13 @@
 package tn.esprit.Foyer_BI10.services;
 
 import lombok.AllArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
+import tn.esprit.Foyer_BI10.entites.Bloc;
 import tn.esprit.Foyer_BI10.entites.Chambre;
 import tn.esprit.Foyer_BI10.entites.TypeChambre;
+import tn.esprit.Foyer_BI10.repositories.BlocRepository;
 import tn.esprit.Foyer_BI10.repositories.ChambreRepository;
 
 import java.util.Date;
@@ -11,6 +15,7 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
+@Slf4j
 @AllArgsConstructor
 public class ChambreServiceImpl implements IChambreService {
 
@@ -73,5 +78,38 @@ chambreRepository.deleteById(idChambre);
     public List<Chambre> findByAnneeDe(Date startDate, Date endDate) {
         return chambreRepository.findByAnneeDeQuery(startDate, endDate);
     }
+
+
+
+    private BlocRepository blocRepository;
+
+    @Override
+    public Chambre affecterChambreABloc(Long num, Long idBloc) {
+        Bloc bloc = blocRepository.findById(idBloc).get();
+        Chambre chambre = chambreRepository.findById(num).get();
+
+        if (bloc != null && chambre != null) {
+            chambre.setBloc(bloc);
+            return chambreRepository.save(chambre);
+        }
+        return null;
+    }
+
+    @Override
+    public void desaffecterChambreDeBloc(Long num, Long idBloc) {
+        Chambre chambre = chambreRepository.findById(num).get();
+
+        if (chambre != null && chambre.getBloc() != null && chambre.getBloc().getIdBloc().equals(idBloc)) {
+            chambre.setBloc(null);
+            chambreRepository.save(chambre);
+        }
+    }
+
+    @Scheduled(fixedDelay = 60000)
+    public void fixedDelayMethod(){
+        log.info("Method with fixed delay");
+    }
+
+
 
 }

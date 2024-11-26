@@ -14,8 +14,10 @@ import java.util.List;
 
 public class BlocController {
 
-        IBlocService blocService;
-
+        private final IBlocService blocService;
+        public BlocController(IBlocService blocService) {
+            this.blocService = blocService;
+        }
 
 
         @PostMapping("/addBloc")
@@ -36,6 +38,13 @@ public class BlocController {
         @DeleteMapping("/deleteBloc/{idBloc}")
         public void deleteBloc(@PathVariable Long idBloc) {
             blocService.deleteBloc(idBloc);
+        }
+
+        @PostMapping("/affecterChambres/{idBloc}")
+        public Bloc affecterChambresABloc(
+                @RequestParam List<Long> numChambre,
+                @PathVariable long idBloc) {
+            return blocService.affecterChambresABloc(numChambre, idBloc);
         }
     }
 

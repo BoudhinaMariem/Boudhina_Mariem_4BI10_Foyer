@@ -33,4 +33,9 @@ public class FoyerController {
     public void deleteFoyer(@PathVariable Long idFoyer) {
         foyerService.deleteFoyer(idFoyer);
     }
+
+    @PostMapping("/ajoutFoyerAvecBlocs")
+    public Foyer ajouterFoyerAvecBlocsAssociés(@RequestBody Foyer foyer) {
+        return foyerService.ajouterFoyerAvecBlocsAssociés(foyer);
+    }
 }

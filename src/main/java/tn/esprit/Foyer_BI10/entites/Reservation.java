@@ -16,7 +16,7 @@ import java.util.List;
 @NoArgsConstructor
 public class Reservation {
     @ManyToMany(mappedBy = "resrvations")
-    List<Etudiant> etudiants;
+    private List<Etudiant> etudiants;
     @Id
     private String idReservation;
     private Date anneeUniversitaire;
@@ -25,4 +25,6 @@ public class Reservation {
 
     @ManyToOne
     private Chambre chambre;
+
+
 }

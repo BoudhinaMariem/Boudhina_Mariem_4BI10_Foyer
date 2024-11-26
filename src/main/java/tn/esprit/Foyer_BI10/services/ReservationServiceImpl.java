@@ -2,7 +2,9 @@ package tn.esprit.Foyer_BI10.services;
 
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
+import tn.esprit.Foyer_BI10.entites.Etudiant;
 import tn.esprit.Foyer_BI10.entites.Reservation;
+import tn.esprit.Foyer_BI10.repositories.EtudiantRepository;
 import tn.esprit.Foyer_BI10.repositories.ReservationRepository;
 
 import java.util.Date;
@@ -35,5 +37,20 @@ reservationRepository.deleteById(idReservation);
     @Override
     public List<Reservation> findByAnneeUniversitaireBetween(Date d1, Date d2) {
         return reservationRepository.findByAnneeUniversitaireBetween(d1, d2);
+    }
+
+
+    private EtudiantRepository etudiantRepository;
+    
+    @Override
+    public Reservation ajouterReservationAvecEtudiants(Reservation reservation) {
+        if (reservation.getEtudiants() != null) {
+            reservation.getEtudiants().forEach(etudiant -> {
+                if (!etudiant.getReservations().contains(reservation)) {
+                    etudiant.getReservations().add(reservation);
+                }
+            });
+        }
+        return reservationRepository.save(reservation);
     }
 }

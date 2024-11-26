@@ -12,4 +12,6 @@ public interface IBlocService {
     public void deleteBloc (Long idBloc);
     public Bloc UpdateBloc(Bloc bloc);
     public List<Bloc> getAllBlocs();
+
+    Bloc affecterChambresABloc(List<Long> numChambre, long idBloc);
 }

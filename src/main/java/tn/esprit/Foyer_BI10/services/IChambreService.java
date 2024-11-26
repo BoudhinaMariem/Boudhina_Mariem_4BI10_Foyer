@@ -22,4 +22,7 @@ public interface IChambreService {
      Integer countChambresByBlocCapaciteGreaterThan(Long capacite);
      List<Chambre> findByBlocName(String nomBloc);
      List<Chambre> findByAnneeDe(Date startDate, Date endDate);
+
+     Chambre affecterChambreABloc(Long num, Long idBloc);
+     void desaffecterChambreDeBloc(Long num, Long idBloc);
 }

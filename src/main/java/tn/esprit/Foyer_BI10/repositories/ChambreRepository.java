@@ -9,11 +9,14 @@ import tn.esprit.Foyer_BI10.entites.TypeChambre;
 
 import java.util.Date;
 import java.util.List;
+import java.util.Optional;
 
 @Repository
 public interface ChambreRepository extends JpaRepository<Chambre, Long> {
 
         List<Chambre> findByTypeC(TypeChambre tc); // Updated method name
+
+        Optional<Chambre> findById(Long idChambre);
 
         Chambre findByNumeroChambre(Long numeroChambre); // This is fine
 

@@ -12,7 +12,11 @@ import java.util.List;
 @RestController
 @RequestMapping("/universite")
 public class UniversiteController {
-   IUniversiteService universiteService;
+   private final IUniversiteService universiteService;
+
+    public UniversiteController(IUniversiteService universiteService) {
+        this.universiteService = universiteService;
+    }
 
     @PostMapping("/addUniversite")
     public Universite addUniversite(@RequestBody Universite universite) {
@@ -32,5 +36,15 @@ public class UniversiteController {
     @DeleteMapping("/deleteUniversite/{idUniversite}")
     public void deleteUniversite(@PathVariable Long idUniversite) {
         universiteService.deleteUniversite(idUniversite);
+    }
+
+    @PostMapping("/affecterFoyerAUniversite/{idFoyer}/{nomUniversite}")
+    public Universite affecterFoyerAUniversite(@PathVariable long idFoyer, @PathVariable String nomUniversite) {
+        return universiteService.affecterFoyerAUniversite(idFoyer, nomUniversite);
+    }
+
+    @PostMapping("/desaffecterFoyerAUniversite/{idUniversite}")
+    public Universite desaffecterFoyerAUniversite(@PathVariable long idUniversite) {
+        return universiteService.desaffecterFoyerAUniversite(idUniversite);
     }
 }

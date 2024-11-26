@@ -91,4 +91,14 @@ public class ChambreController {
             @RequestParam @DateTimeFormat(pattern = "yyyy-MM-dd") Date endDate) {
         return chambreService.findByAnneeDe(startDate, endDate);
     }
+
+    @PostMapping("/desaffecter/{num}/bloc/{idBloc}")
+    public Chambre affecterChambreABloc(@PathVariable Long num, @PathVariable Long idBloc) {
+        return chambreService.affecterChambreABloc(num, idBloc);
+    }
+
+    @DeleteMapping("/desaffecter/{num}/bloc/{idBloc}")
+    public void desaffecterChambreDeBloc(@PathVariable Long num, @PathVariable Long idBloc) {
+        chambreService.desaffecterChambreDeBloc(num, idBloc);
+    }
 }

@@ -20,4 +20,6 @@ public class Universite {
     private String adresse;
     @OneToOne
     private Foyer foyer;
+
+
 }

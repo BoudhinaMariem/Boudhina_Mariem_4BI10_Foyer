@@ -12,5 +12,7 @@ public interface IReservationService {
     public  List<Reservation> getAllReservations();
     List<Reservation> findByAnneeUniversitaireBetween(Date d1, Date d2);
 
+    public Reservation ajouterReservationAvecEtudiants ( Reservation reservation);
+
 
 }

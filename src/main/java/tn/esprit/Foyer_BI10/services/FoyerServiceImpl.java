@@ -31,4 +31,14 @@ foyerRepository.deleteById(idFoyer);
     public List<Foyer> getAllFoyers() {
         return foyerRepository.findAll();
     }
+
+    @Override
+    public Foyer ajouterFoyerAvecBlocsAssociés(Foyer foyer) {
+        if (foyer.bloc != null) {
+            foyer.bloc.forEach(bloc -> bloc.foyer = foyer);
+        }
+        return foyerRepository.save(foyer);
+    }
+
+
 }
